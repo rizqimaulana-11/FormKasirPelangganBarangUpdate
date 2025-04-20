@@ -1,3 +1,21 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 20 Apr 2025 pada 19.51
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `penjualan`
@@ -6,61 +24,95 @@
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kasir`
+-- Struktur dari tabel `barang`
+--
+
+CREATE TABLE `barang` (
+  `kode_barang` varchar(6) NOT NULL,
+  `nama_barang` varchar(25) NOT NULL,
+  `jenis_barang` varchar(20) NOT NULL,
+  `harga_beli` int(11) NOT NULL,
+  `harga_jual` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `barang`
+--
+
+INSERT INTO `barang` (`kode_barang`, `nama_barang`, `jenis_barang`, `harga_beli`, `harga_jual`) VALUES
+('KB001', 'Botol', 'Barang Konsumsi', 300, 5000),
+('KB002', 'Tas', 'Barang Produksi', 20000, 50000),
+('KB003', 'Mouse', 'Barang Ekonomi', 35000, 50000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kasir`
 --
 
 CREATE TABLE `kasir` (
   `id_kasir` varchar(6) NOT NULL,
   `nama_kasir` varchar(25) NOT NULL,
-  `jenis` varchar(20) NOT NULL,
+  `jenis_kelamin` varchar(20) NOT NULL,
   `telepon` varchar(20) NOT NULL,
   `alamat` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `kasir`
+-- Dumping data untuk tabel `kasir`
 --
 
-INSERT INTO `kasir` (`id_kasir`, `nama_kasir`, `jenis`, `telepon`, `alamat`) VALUES
-('KSR001', 'Ayessa', 'Perempuan', '0812', 'Jakarta'),
-('KSR002', 'Kazhimah', 'Perempuan', '0896', 'Pemalang');
+INSERT INTO `kasir` (`id_kasir`, `nama_kasir`, `jenis_kelamin`, `telepon`, `alamat`) VALUES
+('K001', 'Rahayu', 'Perempuan', '08997788213', 'Jakarta'),
+('K002', 'Sugeng', 'Laki-Laki', '089644555231', 'Tangerang'),
+('K003', 'Tika', 'Perempuan', '082177766553', 'Tangerang'),
+('K004', 'Tono', 'Laki-Laki', '08961234321', 'Depok'),
+('K005', 'Niko', 'Laki-Laki', '0876544433522', 'Bogor');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelanggan`
+-- Struktur dari tabel `pelanggan`
 --
 
 CREATE TABLE `pelanggan` (
-  `id` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
-  `nmplg` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
-  `jenis` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `telepon` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `alamat` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_pelanggan` varchar(6) NOT NULL,
+  `nama_pelanggan` varchar(25) NOT NULL,
+  `jenis_kelamin` varchar(20) NOT NULL,
+  `telepon` varchar(20) NOT NULL,
+  `alamat` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pelanggan`
+-- Dumping data untuk tabel `pelanggan`
 --
 
-INSERT INTO `pelanggan` (`id`, `nmplg`, `jenis`, `telepon`, `alamat`) VALUES
-('plgn01', 'Dian', 'Perempuan', '0877', 'Bogor'),
-
+INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `jenis_kelamin`, `telepon`, `alamat`) VALUES
+('01', 'Rizqi M', 'Laki-Laki', '085782128527', 'Jakarta'),
+('02', 'Echa', 'Perempuan', '08967775554442', 'Jakarta'),
+('03', 'Sena', 'Laki-Laki', '08573355544442', 'Jakarta');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `kasir`
+-- Indeks untuk tabel `barang`
+--
+ALTER TABLE `barang`
+  ADD PRIMARY KEY (`kode_barang`);
+
+--
+-- Indeks untuk tabel `kasir`
 --
 ALTER TABLE `kasir`
   ADD PRIMARY KEY (`id_kasir`);
 
 --
--- Indexes for table `pelanggan`
+-- Indeks untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_pelanggan`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

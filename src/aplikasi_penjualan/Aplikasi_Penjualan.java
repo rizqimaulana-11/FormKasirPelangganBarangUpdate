@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package aplikasi_penjualan;
-
+package Aplikasi_Penjualan;
 import tampilan.Pelanggan;
 import tampilan.Kasir;
+import tampilan.Barang;
 import koneksi.koneksi;
 import java.sql.Connection;
 
@@ -41,6 +37,7 @@ public class Aplikasi_Penjualan {
                 public void run() {
                     new Pelanggan().setVisible(true);
                     new Kasir().setVisible(true);
+                    new Barang().setVisible(true);
                 }
             });
         } else {
